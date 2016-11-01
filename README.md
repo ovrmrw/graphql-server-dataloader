@@ -1,9 +1,9 @@
 # graphql-server-dataloader
 Featuring DataLoader power for GraphQL server.
 
-[Demo on Azure Web Apps](http://graphql-server-dataloader.azurewebsites.net/graphiql)
+[Demo on Azure Web Apps](https://graphql-server-dataloader.azurewebsites.net/graphiql)
 
-[Demo with a sample query](http://graphql-server-dataloader.azurewebsites.net/graphiql?query=%7B%0A%20%20user(id%3A%221%22)%7B%0A%20%20%20%20id%0A%20%20%20%20name%0A%20%20%20%20address%20%7B%0A%20%20%20%20%20%20zip%0A%20%20%20%20%20%20street%0A%20%20%20%20%7D%0A%20%20%20%20hobby%20%7B%0A%20%20%20%20%20%20name%0A%20%20%20%20%7D%0A%20%20%20%20follow%20%7B%0A%20%20%20%20%20%20id%0A%20%20%20%20%20%20name%0A%20%20%20%20%20%20follow%20%7B%0A%20%20%20%20%20%20%20%20id%0A%20%20%20%20%20%20%20%20name%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D)
+[Demo with a sample query](https://graphql-server-dataloader.azurewebsites.net/graphiql?query=%7B%0A%20%20user(id%3A%221%22)%7B%0A%20%20%20%20id%0A%20%20%20%20name%0A%20%20%20%20address%20%7B%0A%20%20%20%20%20%20zip%0A%20%20%20%20%20%20street%0A%20%20%20%20%7D%0A%20%20%20%20hobby%20%7B%0A%20%20%20%20%20%20name%0A%20%20%20%20%7D%0A%20%20%20%20follow%20%7B%0A%20%20%20%20%20%20id%0A%20%20%20%20%20%20name%0A%20%20%20%20%20%20follow%20%7B%0A%20%20%20%20%20%20%20%20id%0A%20%20%20%20%20%20%20%20name%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D)
 
 ---
 
