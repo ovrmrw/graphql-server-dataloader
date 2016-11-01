@@ -1,0 +1,47 @@
+{
+  user(id:"1") {
+    id
+    name
+    age
+    address {
+      zip
+      street
+    }
+    hobby {
+      name
+    }
+    follow {
+      id
+      name
+      age
+      address {
+        zip
+        street
+      }
+      hobby {
+        name
+      }
+      follow {
+    		id
+        name
+        hobby {
+          name
+        }
+        follow {
+          id
+          name
+          hobby {
+            name
+          }
+          follow {
+            id
+            name
+            hobby {
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+}

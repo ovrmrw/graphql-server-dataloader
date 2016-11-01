@@ -1,0 +1,65 @@
+{
+  "users": {
+    "1": {
+      "id": "1",
+      "name": "Tarou",
+      "age": 20,
+      "address": {
+        "zip": "111",
+        "street": "Shibuya"
+      },
+      "follow": [
+        "2",
+        "3"
+      ],
+      "hobby": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "2": {
+      "id": "2",
+      "name": "Hanako",
+      "age": 30,
+      "address": {
+        "zip": "222",
+        "street": "Marunouchi"
+      },
+      "follow": [
+        "3"
+      ],
+      "hobby": [
+        "1",
+        "2"
+      ]
+    },
+    "3": {
+      "id": "3",
+      "name": "John",
+      "age": 40,
+      "address": {
+        "zip": "333",
+        "street": "Sugamo"
+      },
+      "follow": [
+        "1"
+      ],
+      "hobby": []
+    }
+  },
+  "hobby": {
+    "1": {
+      "id": "1",
+      "name": "movie"
+    },
+    "2": {
+      "id": "2",
+      "name": "swimming"
+    },
+    "3": {
+      "id": "3",
+      "name": "hiking"
+    }
+  }
+}
