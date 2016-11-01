@@ -12,7 +12,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var root = _path2.default.resolve();
 var jsonPath = _path2.default.join(root, 'secret.json');
-console.log('jsonPath:', jsonPath);
+console.log('Secret JSON Path:', jsonPath);
 _firebase2.default.initializeApp({
     serviceAccount: jsonPath,
     databaseURL: "https://graphql-e5abf.firebaseio.com",
