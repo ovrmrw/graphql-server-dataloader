@@ -25,6 +25,7 @@ export const resolverMap = {
     },
   },
 
+
   User: {
     follow(user: User, args: {}, context: Context, info: GraphQLResolveInfo): Promise<User[]> | null {
       // userLoader.clearAll();
