@@ -40,5 +40,5 @@ jspm_packages
 typings
 .tscOutDir
 .dest*
-# dest
+dest
 secret.json
