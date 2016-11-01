@@ -15,8 +15,8 @@ require('./firebase');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var server = new _hapi2.default.Server();
-var HOST = 'localhost';
-var PORT = 3000;
+var HOST = '0.0.0.0';
+var PORT = process.env.PORT || 3000;
 server.connection({
     host: HOST,
     port: PORT
