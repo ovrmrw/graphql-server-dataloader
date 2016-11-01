@@ -1,3 +1,4 @@
+///////////////////////// sample1 ///////////////////////// 
 {
   user(id:"1") {
     id
@@ -44,4 +45,36 @@
       }
     }
   }
+}
+
+
+///////////////////////// sample2 ///////////////////////// 
+{
+  user(id:"1") {
+    ...userFragment
+    follow {
+      ...userFragment
+      follow {
+        ...userFragment
+        follow {
+          ...userFragment
+          follow {
+            ...userFragment
+          }
+        }
+      }
+    }
+  }
+}
+
+fragment userFragment on User {
+  id
+  name
+  address {
+    zip
+    street
+  }
+  hobby {
+    name
+  }  
 }

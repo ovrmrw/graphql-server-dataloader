@@ -1,5 +1,5 @@
 ////////////////////////////// SCHEMA ////////////////////////////// 
-export const schema = `
+export const schema = [`
 
 type User {
   id: ID!
@@ -21,6 +21,7 @@ type Hobby {
 }
 
 type Query {
+  users: [User]
   user(id: ID!): User
 }
 
@@ -28,7 +29,7 @@ schema {
   query: Query
 }
 
-`;
+`];
 
 
 ////////////////////////////// INTERFACE //////////////////////////////

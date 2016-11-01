@@ -6,7 +6,7 @@ import { User, Hobby } from './schema';
 
 export const userLoader: DataLoaderType<string, User>
   = new DataLoader((keys: string[]) => new Promise<User[]>((resolve, reject) => {
-    const promises: Promise<User>[] = keys.map(key => {
+    const promises: Promise<User>[] | never = keys.map(key => {
       return new Promise<User>(resolve => {
         firebase.database().ref('users/' + key).once('value', snapshot => {
           const user: User = snapshot.val();
@@ -24,7 +24,7 @@ export const userLoader: DataLoaderType<string, User>
 
 export const hobbyLoader: DataLoaderType<string, Hobby>
   = new DataLoader((keys: string[]) => new Promise<Hobby[]>((resolve, reject) => {
-    const promises: Promise<Hobby>[] = keys.map(key => {
+    const promises: Promise<Hobby>[] | never = keys.map(key => {
       return new Promise<Hobby>(resolve => {
         firebase.database().ref('hobby/' + key).once('value', snapshot => {
           const hobby: Hobby = snapshot.val();

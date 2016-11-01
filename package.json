@@ -1,5 +1,5 @@
 {
-  "name": "pokemon-graphql-server",
+  "name": "graphql-server-dataloader",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -16,7 +16,7 @@
     "start": "nodemon server.ts --exec ts-babel-node"
   },
   "keywords": [],
-  "author": "",
+  "author": "Tomohiro Noguchi",
   "license": "MIT",
   "devDependencies": {
     "@types/hapi": "^13.0.36",

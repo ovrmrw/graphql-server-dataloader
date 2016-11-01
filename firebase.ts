@@ -6,6 +6,7 @@ const root = path.resolve();
 const jsonPath = path.join(root, 'secret.json');
 console.log('Secret JSON Path:', jsonPath);
 
+
 firebase.initializeApp({
   serviceAccount: jsonPath,
   databaseURL: "https://graphql-e5abf.firebaseio.com",
