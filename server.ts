@@ -8,8 +8,8 @@ import './firebase';
 
 const server = new Hapi.Server();
 
-const HOST = 'localhost';
-const PORT = 3000;
+const HOST = '0.0.0.0';
+const PORT = process.env.PORT || 3000;
 
 server.connection({
   host: HOST,
