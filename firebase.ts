@@ -4,7 +4,7 @@ import path from 'path';
 
 const root = path.resolve();
 const jsonPath = path.join(root, 'secret.json');
-console.log('jsonPath:', jsonPath);
+console.log('Secret JSON Path:', jsonPath);
 
 firebase.initializeApp({
   serviceAccount: jsonPath,

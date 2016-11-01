@@ -1,6 +1,8 @@
 # graphql-server-dataloader
 Featuring DataLoader power for GraphQL server.
 
+[Demo on Azure Web Apps](http://graphql-server-dataloader.azurewebsites.net/graphiql)
+
 ---
 
 ## Setup
