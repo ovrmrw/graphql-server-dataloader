@@ -1,7 +1,6 @@
 import 'babel-polyfill';
 import Hapi from 'hapi';
 import { graphqlHapi, graphiqlHapi } from 'graphql-server-hapi';
-declare const Zone: any;
 
 import './firebase';
 import { executableSchema, createLoaders } from './data';
