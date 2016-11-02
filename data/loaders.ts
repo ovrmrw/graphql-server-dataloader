@@ -2,39 +2,60 @@ import firebase from 'firebase';
 const DataLoader = require('dataloader');
 
 import { User, Hobby } from './schema';
-import { getUser, getHobby } from './firebase-queries';
+import { getUser, getHobby } from './firebase-connectors';
+import { DataLoaderType, Loaders } from './types';
 
 
-export const userLoader: DataLoaderType<string, User> = new DataLoader((keys: string[]) => {
-  return new Promise<User[]>((resolve, reject) => {
-    const promises: Promise<User>[] | never = keys.map(key => {
+export function createLoaders(cache: boolean = true, batch: boolean = true): Loaders {
+  const options = { cache, batch };
+  return {
+    userLoader: new DataLoader(userLoaderCallback(), options) as DataLoaderType<string, User>,
+    hobbyLoader: new DataLoader(hobbyLoaderCallback(), options) as DataLoaderType<string, Hobby>,
+  }
+}
+
+
+function userLoaderCallback(): (keys: string[]) => Promise<User[]> {
+  return async (keys: string[]) => {
+    const promises: Promise<User>[] = keys.map(key => {
       return getUser(key);
     });
 
-    Promise.all(promises)
-      .then(results => resolve(results))
-      .catch(err => reject(err));
-  });
-});
+    try {
+      return await Promise.all(promises);
+    } catch (err) {
+      throw err;
+    }
+  }
+}
 
 
-export const hobbyLoader: DataLoaderType<string, Hobby> = new DataLoader((keys: string[]) => {
-  return new Promise<Hobby[]>((resolve, reject) => {
-    const promises: Promise<Hobby>[] | never = keys.map(key => {
+function hobbyLoaderCallback(): (keys: string[]) => Promise<Hobby[]> {
+  return async (keys: string[]) => {
+    const promises: Promise<Hobby>[] = keys.map(key => {
       return getHobby(key);
     });
 
-    Promise.all(promises)
-      .then(results => resolve(results))
-      .catch(err => reject(err));
-  });
-});
-
-
-
-interface DataLoaderType<T, R> {
-  load(key: T): Promise<R[]>;
-  loadMany(keys: T[]): Promise<R[]>;
-  clear(key: T): void;
-  clearAll(): void;
+    try {
+      return await Promise.all(promises);
+    } catch (err) {
+      throw err;
+    }
+  }
 }
+
+
+// export const hobbyLoader: DataLoaderType<string, Hobby> = new DataLoader((keys: string[]) => {
+//   return new Promise<Hobby[]>((resolve, reject) => {
+//     const promises: Promise<Hobby>[] | never = keys.map(key => {
+//       return getHobby(key);
+//     });
+
+//     Promise.all(promises)
+//       .then(results => resolve(results))
+//       .catch(err => reject(err));
+//   });
+// });
+
+
+

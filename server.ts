@@ -2,7 +2,7 @@ import 'babel-polyfill';
 import Hapi from 'hapi';
 import { graphqlHapi, graphiqlHapi } from 'graphql-server-hapi';
 
-import { executableSchema as usersSchema } from './data';
+import { executableSchema as usersSchema, createLoaders, Context } from './data';
 import './firebase';
 
 
@@ -21,11 +21,13 @@ server.register({
   register: graphqlHapi,
   options: {
     path: '/graphql',
-    graphqlOptions: (request: Hapi.Request) => {
+    graphqlOptions: (request: Context) => {
+      console.log('='.repeat(80));
+      request.loaders = createLoaders();
       return {
         schema: usersSchema,
         context: request,
-      };
+      }
     },
     route: {
       cors: true
