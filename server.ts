@@ -1,9 +1,10 @@
 import 'babel-polyfill';
 import Hapi from 'hapi';
 import { graphqlHapi, graphiqlHapi } from 'graphql-server-hapi';
+declare const Zone: any;
 
-import { executableSchema as usersSchema, createLoaders, Context } from './data';
 import './firebase';
+import { executableSchema, createLoaders } from './data';
 
 
 const server = new Hapi.Server();
@@ -21,12 +22,11 @@ server.register({
   register: graphqlHapi,
   options: {
     path: '/graphql',
-    graphqlOptions: (request: Context) => {
+    graphqlOptions: (request: Hapi.Request) => {
       console.log('='.repeat(80));
-      request.loaders = createLoaders();
       return {
-        schema: usersSchema,
-        context: request,
+        schema: executableSchema,
+        context: Object.assign(request, { loaders: createLoaders() }),
       }
     },
     route: {

@@ -13,7 +13,8 @@
     "babel:w": "babel .dest-tsc --out-dir dest --presets latest --no-comments --watch",
     "build": "npm run tsc && npm run babel",
     "build:w": "concurrently -k \"npm run tsc:w\" \"npm run babel:w\" ",
-    "start": "nodemon server.ts --exec ts-babel-node"
+    "start": "nodemon server.ts --exec ts-babel-node",
+    "build:azure": "tsc --outDir .dest-tsc && babel .dest-tsc --out-dir ../wwwroot --preset latest"
   },
   "keywords": [],
   "author": "Tomohiro Noguchi",

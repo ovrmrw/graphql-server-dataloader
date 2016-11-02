@@ -4,7 +4,7 @@ import { GraphQLResolveInfo } from 'graphql';
 
 import { User, Hobby } from './schema';
 import { createLoaders } from './loaders';
-import { getUserIds } from './firebase-connectors';
+import { getUserIdsConnector } from './firebase-connectors';
 import { Context } from './types';
 
 
@@ -12,7 +12,7 @@ export const resolverMap = {
 
   Query: {
     users(root: any, args: {}, context: Context, info: GraphQLResolveInfo): Promise<User[]> {
-      return getUserIds().then(ids => context.loaders.userLoader.loadMany(ids));
+      return getUserIdsConnector().then(ids => context.loaders.userLoader.loadMany(ids));
     },
 
     user(root: any, args: { id: string }, context: Context, info: GraphQLResolveInfo): Promise<User[]> {

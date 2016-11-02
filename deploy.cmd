@@ -1,2 +1,1 @@
-cd ../wwwroot
-npm run build
+npm run build:azure
