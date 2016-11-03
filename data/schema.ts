@@ -20,13 +20,13 @@ type Hobby {
   name: String!
 }
 
-type Query {
+type RootQuery {
   users: [User]
   user(id: ID!): User
 }
 
 schema {
-  query: Query
+  query: RootQuery
 }
 
 `];

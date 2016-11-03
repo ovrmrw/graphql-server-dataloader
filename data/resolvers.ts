@@ -8,8 +8,8 @@ import { Context } from './types';
 
 export const resolverMap = {
 
-  Query: {
-    users(root: any, args: {}, context: Context, info: GraphQLResolveInfo): Promise<User[]> {      
+  RootQuery: {
+    users(root: any, args: {}, context: Context, info: GraphQLResolveInfo): Promise<User[]> {
       return getUserIdsConnector().then(ids => context.loaders.userLoader.loadMany(ids));
     },
 
