@@ -2,8 +2,8 @@ import 'babel-polyfill';
 import Hapi from 'hapi';
 import { graphqlHapi, graphiqlHapi } from 'graphql-server-hapi';
 
-import './firebase';
-import { executableSchema, createLoaders } from './data';
+import './firebase-initializer';
+import { executableSchema, createLoaders, Context } from './data';
 
 
 const server = new Hapi.Server();
@@ -25,7 +25,7 @@ server.register({
       console.log('='.repeat(80));
       return {
         schema: executableSchema,
-        context: Object.assign(request, { loaders: createLoaders() }),
+        context: Object.assign(request, { loaders: createLoaders() }) as Context,
       }
     },
     route: {

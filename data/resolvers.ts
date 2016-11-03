@@ -1,9 +1,7 @@
 import Hapi from 'hapi';
-import lodash from 'lodash';
 import { GraphQLResolveInfo } from 'graphql';
 
 import { User, Hobby } from './schema';
-import { createLoaders } from './loaders';
 import { getUserIdsConnector } from './firebase-connectors';
 import { Context } from './types';
 
@@ -11,7 +9,7 @@ import { Context } from './types';
 export const resolverMap = {
 
   Query: {
-    users(root: any, args: {}, context: Context, info: GraphQLResolveInfo): Promise<User[]> {
+    users(root: any, args: {}, context: Context, info: GraphQLResolveInfo): Promise<User[]> {      
       return getUserIdsConnector().then(ids => context.loaders.userLoader.loadMany(ids));
     },
 
