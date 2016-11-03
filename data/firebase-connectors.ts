@@ -15,7 +15,7 @@ export async function getUserIdsConnector(): Promise<string[]> {
 export async function getUsersConnector(keys: string[]): Promise<User[]> {
   const snapshotPromises = keys.map(key => firebase.database().ref('users/' + key).once('value') as Promise<Snapshot>);
   const users: User[] = await Promise.all(snapshotPromises).then(snapshots => snapshots.map(s => s.val()));
-  users.forEach(user => console.log('userLoader fetch:', { id: user.id, name: user.name }));
+  console.log('userLoader fetch:', ...users.map(user => ({ id: user.id, name: user.name })));
   return users;
 }
 
@@ -23,7 +23,7 @@ export async function getUsersConnector(keys: string[]): Promise<User[]> {
 export async function getHobbiesConnector(keys: string[]): Promise<Hobby[]> {
   const snapshotPromises = keys.map(key => firebase.database().ref('hobby/' + key).once('value') as Promise<Snapshot>);
   const hobbies: Hobby[] = await Promise.all(snapshotPromises).then(snapshots => snapshots.map(s => s.val()));
-  hobbies.forEach(hobby => console.log('hobbyLoader fetch:', { id: hobby.id, name: hobby.name }));
+  console.log('hobbyLoader fetch:', ...hobbies.map(hobby => ({ id: hobby.id, name: hobby.name })));
   return hobbies;
 }
 
