@@ -23,9 +23,10 @@ server.register({
     path: '/graphql',
     graphqlOptions: (request: Hapi.Request) => {
       console.log('='.repeat(80));
+      const context: Context = Object.assign(request, { loaders: createLoaders() });
       return {
         schema: executableSchema,
-        context: Object.assign(request, { loaders: createLoaders() }) as Context,
+        context
       }
     },
     route: {

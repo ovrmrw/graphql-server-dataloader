@@ -1,12 +1,15 @@
 ////////////////////////////// SCHEMA ////////////////////////////// 
 export const schema = [`
 
+  # type definition of User 
 type User {
   id: ID!
   name: String!
   age: Int
   address: Address
+    # other users who current user follows.
   follow: [User]
+    # current user's hobbies.
   hobby: [Hobby]
 }
 

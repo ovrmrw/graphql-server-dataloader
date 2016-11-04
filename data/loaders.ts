@@ -2,14 +2,14 @@ const DataLoader = require('dataloader');
 
 import { User, Hobby } from './schema';
 import { getUsersConnector, getHobbiesConnector } from './firebase-connectors';
-import { DataLoaderType, Loaders } from './types';
+import { Loaders } from './types';
 
 
 export function createLoaders(cache: boolean = true, batch: boolean = true): Loaders {
   const options = { cache, batch };
   return {
-    userLoader: new DataLoader(userLoaderCallback, options) as DataLoaderType<string, User>,
-    hobbyLoader: new DataLoader(hobbyLoaderCallback, options) as DataLoaderType<string, Hobby>,
+    userLoader: new DataLoader(userLoaderCallback, options),
+    hobbyLoader: new DataLoader(hobbyLoaderCallback, options),
   }
 }
 
