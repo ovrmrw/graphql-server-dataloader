@@ -1,5 +1,6 @@
 import Hapi from 'hapi';
 import { GraphQLResolveInfo } from 'graphql';
+import lodash from 'lodash';
 
 import { User, Hobby } from './schema';
 import { getUserIdsConnector } from './firebase-connectors';
@@ -20,12 +21,16 @@ export const resolverMap = {
 
 
   User: {
-    follow(user: User, args: {}, context: Context, info: GraphQLResolveInfo): Promise<User[]> | null {
-      return user.follow ? context.loaders.userLoader.loadMany(user.follow) : null;
+    follow(user: User, args: { first?: number }, context: Context, info: GraphQLResolveInfo): Promise<User[]> | null {
+      const limit: number = args.first || 100;
+      const followIds: string[] | null = user.follow ? user.follow.slice(0, limit) : null;
+      return followIds ? context.loaders.userLoader.loadMany(followIds) : null;
     },
 
-    hobby(user: User, args: {}, context: Context, info: GraphQLResolveInfo): Promise<Hobby[]> | null {
-      return user.hobby ? context.loaders.hobbyLoader.loadMany(user.hobby) : null;
+    hobby(user: User, args: { first?: number }, context: Context, info: GraphQLResolveInfo): Promise<Hobby[]> | null {
+      const limit: number = args.first || 100;
+      const hobbyIds: string[] | null = user.hobby ? user.hobby.slice(0, limit) : null;
+      return hobbyIds ? context.loaders.hobbyLoader.loadMany(hobbyIds) : null;
     }
   }
 

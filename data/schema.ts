@@ -8,9 +8,9 @@ type User {
   age: Int
   address: Address
     # other users who current user follows.
-  follow: [User]
+  follow(first: Int): [User]
     # current user's hobbies.
-  hobby: [Hobby]
+  hobby(first: Int): [Hobby]
 }
 
 type Address {
